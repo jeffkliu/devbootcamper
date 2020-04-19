@@ -79,3 +79,15 @@ exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
     data: bootcamp,
   });
 });
+
+// @desc    Delete all bootcamps
+// @route   DELETE /api/v1/bootcamps/
+// @access  Private
+exports.deleteAll = asyncHandler(async (req, res, next) => {
+  const bootcamp = await Bootcamp.deleteMany({});
+
+  res.status(200).json({
+    success: true,
+    data: 'All Deleted',
+  });
+});
