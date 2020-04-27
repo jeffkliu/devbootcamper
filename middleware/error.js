@@ -10,7 +10,7 @@ const errorHandler = (err, req, res, next) => {
   switch (error.name) {
     case 'CastError':
       error = new ErrorResponse(
-        `Bootcamp not found with id of ${error.value}`,
+        `Resource not found with id of ${error.value}`,
         404
       );
       break;
@@ -30,7 +30,7 @@ const errorHandler = (err, req, res, next) => {
   if (error.code == 11000) {
     console.log('this is it!');
     error = new ErrorResponse(
-      `Duplicate Bootcamp: "${error.keyValue['name']}"`,
+      `Duplicate Resource: "${JSON.stringify(error.keyValue)}"`,
       400
     );
   }
